@@ -6,7 +6,7 @@
       <%= turbo_stream_from "users" %>
       <div id="users">
         <% @users.each do |user| %>
-          <%= user.username %>
+          <%= link_to user.username, user %>
         <% end %>
       </div>
     </div>
@@ -23,7 +23,7 @@
   </div>
   <div class="col-md-10 bg-dark">
   <% if @single_room %>
-    <h4 class="text-center"> <%= @single_room.name %> </h4>
+    <h4 class="text-center"> <%= @user&.username || @single_room.name %> </h4>
     <%= turbo_stream_from @single_room %>
     <div id="messages">
     <%= render @messages %>
